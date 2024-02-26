@@ -1,0 +1,19 @@
+h1{
+    align-items: center;
+    padding-bottom: 20px;
+    color: rgb(11, 5, 67);
+}
+.page-header{
+    margin-top: 150px;
+}
+.container{
+    margin-top: 150px;
+}
+.table1{
+    width: 50%;
+    height: auto;
+    border-color: brown;
+    border-style: solid;
+    border-width: 1px;
+    
+}

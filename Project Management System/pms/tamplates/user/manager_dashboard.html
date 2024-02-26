@@ -1,0 +1,103 @@
+{% extends '../base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+    <link rel="stylesheet" href="{% static './sections/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- CSS Files -->
+  <link href="{% static './assets1/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static './assets1/css/now-ui-dashboard.css' %}" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{% static './assets1/demo/demo.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <br>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="h1" style="color: black;background-color: aliceblue;" >welcome to manager module </h1>
+    
+        <table class="table" style="background-color: aliceblue;">
+          <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Technology</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Estimeted Hours</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Start Date</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">End Date</th>
+                <th class="text-secondary opacity-7">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for project in projects %}
+
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <!-- <div>
+                      <img src="{% static './assets/img/team-2.jpg' %}" class="avatar avatar-sm me-3" alt="user1">
+                    </div> -->
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">{{project.name}}</h6>
+                      
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-xs font-weight-bold mb-0">{{project.technology}}</p>
+                  
+                </td>
+                <td class="align-middle text-center text-sm">
+                  <span class="badge badge-sm bg-gradient-success">{{project.estimated_hours}}</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">{{project.startDate}}</span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">{{project.endDate}}</span>
+                </td>
+                <td class="align-middle">
+                  <a  href="{% url 'update_project' pk=project.pk %}" class="btn btn-link text-dark ms-3" data-bs-toggle="tooltip">
+                    EDIT
+                  </a>
+                  <a href="{% url 'detail_project' pk=project.pk %}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      DETAIL
+                    </a>
+                    <a href="{% url 'delete_project' pk=project.pk %}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      DELETE
+                    </a>
+                    
+                </td>
+              </tr>
+              {% endfor %}
+              
+              
+            </tbody>
+          </table>
+    <a href="{% url 'project_create' %}" class="btn btn-primary">add Project</a>
+    <a href="{% url 'project_list' %}" class="btn btn-info">Projects</a><br>
+    <a href="{% url 'team_create' %}" class="btn btn-primary">Add Team Member</a>
+    <a href="{% url 'team_list' %}" class="btn btn-info">Team List</a><br>
+    <a href="{% url 'module_create' %}" class="btn btn-primary">Module Create</a>
+    <a href="{% url 'module_list' %}" class="btn btn-info">Module List</a><br>
+    <a href="{% url 'task_create' %}" class="btn btn-primary">Create Task</a>
+    <a href="{% url 'task_list' %}" class="btn btn-info">Task List</a>
+    <!-- <img src="{% static './assets/img/annie-spratt.jpg' %}" height=""> -->
+    
+</body>
+</html>
+{% endblock content %}
